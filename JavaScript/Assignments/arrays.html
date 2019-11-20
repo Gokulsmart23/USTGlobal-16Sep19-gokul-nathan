@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = [1,2,3,4,5];
+        console.log('Function');
+        sumArr(arr);
+        function sumArr(arr){
+        var sum =0; 
+        for(var i=0; i<arr.length; i++){
+            sum = sum + arr[i];
+        }
+        console.log(sum);
+    }
+    console.log('Anonymous Function');
+    var sumAr = function(arr){
+        var sum =0;
+        for(var i=0; i<arr.length; i++){
+            sum = sum + arr[i];
+        }
+        console.log(sum);
+    }
+    sumAr(arr);
+    console.log('Self Invoked Function');
+    (function(arr){
+        var sum =0;
+        for(var i=0; i<arr.length; i++){
+            sum = sum + arr[i];
+        }
+        console.log(sum);
+    })(arr);
+    console.log('Fat Arrow Function');
+    var ar = arr=>{
+        var sum =0;
+        for(var i=0; i<arr.length; i++){
+            sum = sum + arr[i];
+        }
+        console.log(sum);
+    }
+    ar(arr);
+    </script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <Script>
+        var n = prompt('Enter the number');
+        console.log('Function');
+        isPrime(n);
+    function isPrime(n){
+        var n, i, flag = true; 
+              for (i = 2; i <= n - 1; i++) 
+                if (n % i == 0) { 
+                    flag = false; 
+                    break; 
+                } 
+            if (flag == true) 
+                console.log(n + " is prime number"); 
+            else
+                console.log(n + " is not a prime number"); 
+}
+console.log('Anonymous Function');
+    var p = function(n){
+        var n, i, flag = true; 
+              for (i = 2; i <= n - 1; i++) 
+                if (n % i == 0) { 
+                    flag = false; 
+                    break; 
+                } 
+            if (flag == true) 
+                console.log(n + " is prime number"); 
+            else
+                console.log(n + " is not a prime number");
+    }
+    p(n);
+    console.log('Self Invoked Function');
+    (function(n){
+        var n, i, flag = true; 
+              for (i = 2; i <= n - 1; i++) 
+                if (n % i == 0) { 
+                    flag = false; 
+                    break; 
+                } 
+            if (flag == true) 
+                console.log(n + " is prime number"); 
+            else
+                console.log(n + " is not a prime number"); 
+    })(n);
+    console.log('Fat Arrow Function');
+        var pri =n=>{
+            var n, i, flag = true; 
+              for (i = 2; i <= n - 1; i++) 
+                if (n % i == 0) { 
+                    flag = false; 
+                    break; 
+                } 
+            if (flag == true) 
+                console.log(n + " is prime number"); 
+            else
+                console.log(n + " is not a prime number"); 
+        }
+        pri(n);
+    </Script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div>
+            <h1>Login Form</h1>
+            <label for="">User ID</label><br>
+            <input type="text" name="username" id="username"><br>
+            <p id="usrerr" display:none></p>
+            <label for="">Password</label><br>
+            <input type="password" name="password" id="password"><br>
+            <p id="pwderr" display:none></p>
+            Show Password<input type="checkbox" name="check" id="check" onclick="showPassword()"><br>
+            <input type="submit" value="Login" id="login" onclick="sub()">
+        </div>
+    </div>
+    <script src="login.js"></script>
+</body>
+</html>

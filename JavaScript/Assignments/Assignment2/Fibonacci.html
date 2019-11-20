@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var num = prompt('Enter the Number');
+        console.log('Function');
+        fibo(num);
+        function fibo(num){
+        var var1 = 0;
+		var var2 = 1;
+		var var3;
+		console.log(var1);
+		console.log(var2);
+ 		for(var i=3; i <= num;i++)
+		{
+			var3 = var1 + var2;
+			var1 = var2;
+			var2 = var3;
+ 			console.log(var3);
+		}
+        }
+        console.log('Anonymous Function');
+        var fib = function(num){
+        var var1 = 0;
+		var var2 = 1;
+		var var3;
+		console.log(var1);
+		console.log(var2);
+ 		for(var i=3; i <= num;i++)
+		{
+			var3 = var1 + var2;
+			var1 = var2;
+			var2 = var3;
+ 			console.log(var3);
+		}
+        }
+        fib(num);
+        console.log('Self Invoked Function');
+        (function(num){
+            var var1 = 0;
+		var var2 = 1;
+		var var3;
+		console.log(var1);
+		console.log(var2);
+ 		for(var i=3; i <= num;i++)
+		{
+			var3 = var1 + var2;
+			var1 = var2;
+			var2 = var3;
+ 			console.log(var3);
+		}
+        })(num);
+        console.log('Fat Arrow Function');
+        var fi = num=>{
+            var var1 = 0;
+		var var2 = 1;
+		var var3;
+		console.log(var1);
+		console.log(var2);
+ 		for(var i=3; i <= num;i++)
+		{
+			var3 = var1 + var2;
+			var1 = var2;
+			var2 = var3;
+ 			console.log(var3);
+        }
+        }
+        fi(num);
+    </script>
+</body>
+</html>

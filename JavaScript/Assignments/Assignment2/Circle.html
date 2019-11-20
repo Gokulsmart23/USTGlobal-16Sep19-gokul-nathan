@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Circle</title>
+</head>
+<body>
+    <script>
+        var r = prompt('Enter radius of a circle');
+        console.log('Function');
+        circum(r);
+        function circum(r){
+           var cir = 2*(Math.PI)*r;
+           console.log(cir);
+        }
+        console.log('Anonymous Function');
+        var c = function(r){
+            var cir = 2*(Math.PI)*r;
+            return cir;
+        }
+        var circle = c(r);
+        console.log(circle);
+        console.log('Self Invoked Function');
+        (function(r){
+            console.log(2*(Math.PI)*r);
+        })(r)
+        console.log('Fat Arrow Function');
+        var ci =r=>{
+            console.log(2*(Math.PI)*r);
+        }
+        ci(r);
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Factorial</title>
+</head>
+<body>
+    <script> 
+    var n = prompt('Enter the number');
+    console.log('Function');
+    console.log(factorials(n));
+    function factorials(n)
+    {
+        var f=1;
+        while(n>0){
+            f=f*n;
+            n--;
+        }
+        return f;
+    }
+    console.log('Anonymous Function');
+        var fact =function(n){
+        var f=1;
+        while(n>0){
+            f=f*n;
+            n--;
+        }
+        return f;
+    }
+    var res = fact(n);
+    console.log(res);
+    console.log('Self Invoked Function');
+    (function(n){
+        var f=1;
+        while(n>0){
+            f=f*n;
+            n--;
+        }
+        console.log(f);
+    })(n);
+    console.log('Fat Arrow Function');
+    var fact = n=>{
+        var f=1;
+        while(n>0){
+            f=f*n;
+            n--;
+        }
+        console.log(f);
+    }
+    fact(n);
+    </script>
+</body>
+</html>
