@@ -1,0 +1,523 @@
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 7
+Server version: 5.7.27-log MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| dummydb            |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> use dummydb;
+Database changed
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> create table  product(pid int, pname varchar(120),quantity int);
+Query OK, 0 rows affected (0.45 sec)
+
+mysql> show tables;
++-------------------+
+| Tables_in_dummydb |
++-------------------+
+| product           |
++-------------------+
+1 row in set (0.02 sec)
+
+mysql> desc product;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| pid      | int(11)      | YES  |     | NULL    |       |
+| pname    | varchar(120) | YES  |     | NULL    |       |
+| quantity | int(11)      | YES  |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+3 rows in set (0.02 sec)
+
+mysql> drop table product;
+Query OK, 0 rows affected (0.27 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| dummydb            |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.01 sec)
+
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> drop database dummydb;
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.00 sec)
+
+mysql> create database ust;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> color white;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'color white' at line 1
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| ust                |
++--------------------+
+5 rows in set (0.01 sec)
+
+mysql>
+mysql> create database dummydb;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> create table  product(pid int, pname varchar(120),quantity int);
+ERROR 1046 (3D000): No database selected
+mysql> use dummydb;
+Database changed
+mysql> create table  product(pid int, pname varchar(120),quantity int);
+Query OK, 0 rows affected (0.39 sec)
+
+mysql> desc product;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| pid      | int(11)      | YES  |     | NULL    |       |
+| pname    | varchar(120) | YES  |     | NULL    |       |
+| quantity | int(11)      | YES  |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table product add column price int;
+Query OK, 0 rows affected (0.70 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe product;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| pid      | int(11)      | YES  |     | NULL    |       |
+| pname    | varchar(120) | YES  |     | NULL    |       |
+| quantity | int(11)      | YES  |     | NULL    |       |
+| price    | int(11)      | YES  |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table product change column pid productid;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> alter table product change column pid-column productid;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-column productid' at line 1
+mysql> alter table product change column price cost int;
+Query OK, 0 rows affected (0.14 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe product;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| pid      | int(11)      | YES  |     | NULL    |       |
+| pname    | varchar(120) | YES  |     | NULL    |       |
+| quantity | int(11)      | YES  |     | NULL    |       |
+| cost     | int(11)      | YES  |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+mysql> describe product;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| pid      | int(11)      | YES  |     | NULL    |       |
+| pname    | varchar(120) | YES  |     | NULL    |       |
+| quantity | int(11)      | YES  |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> rename table product to product_info;
+Query OK, 0 rows affected (0.22 sec)
+
+mysql> show tables;
++-------------------+
+| Tables_in_dummydb |
++-------------------+
+| product_info      |
++-------------------+
+1 row in set (0.00 sec)
+mysql> insert into product_info(pid,pname,quantity) values(1,'pen',10);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> desc product_info;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| pid      | int(11)      | YES  |     | NULL    |       |
+| pname    | varchar(120) | YES  |     | NULL    |       |
+| quantity | int(11)      | YES  |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> show tables;
++-------------------+
+| Tables_in_dummydb |
++-------------------+
+| product_info      |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> rename table product_info to product;
+Query OK, 0 rows affected (0.22 sec)
+
+mysql> show tables;
++-------------------+
+| Tables_in_dummydb |
++-------------------+
+| product           |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> select * from product;
++------+-------+----------+
+| pid  | pname | quantity |
++------+-------+----------+
+|    1 | pen   |       10 |
++------+-------+----------+
+1 row in set (0.02 sec)
+mysql> insert into product values(2,'note',5);
+Query OK, 1 row affected (0.09 sec)
+mysql> select * from product;
++------+-------+----------+
+| pid  | pname | quantity |
++------+-------+----------+
+|    1 | pen   |       10 |
+|    2 | note  |        5 |
++------+-------+----------+
+2 rows in set (0.00 sec)
+mysql> insert into product(pid,pname) values(3,'pencil');
+Query OK, 1 row affected (0.09 sec)
+
+mysql> select * from product;
++------+--------+----------+
+| pid  | pname  | quantity |
++------+--------+----------+
+|    1 | pen    |       10 |
+|    2 | note   |        5 |
+|    3 | pencil |     NULL |
++------+--------+----------+
+3 rows in set (0.00 sec)
+mysql> alter table product drop column cost;
+Query OK, 0 rows affected (0.75 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe product;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| pid      | int(11)      | YES  |     | NULL    |       |
+| pname    | varchar(120) | YES  |     | NULL    |       |
+| quantity | int(11)      | YES  |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+mysql> insert into product(pid,pname,quantity) values(4,'mobile',1),(4,'laptop',2);
+Query OK, 2 rows affected (0.10 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from product;
++------+--------+----------+
+| pid  | pname  | quantity |
++------+--------+----------+
+|    1 | pen    |       10 |
+|    2 | note   |        5 |
+|    3 | pencil |     NULL |
+|    4 | mobile |        1 |
+|    4 | laptop |        2 |
++------+--------+----------+
+5 rows in set (0.00 sec)
+
+mysql> update product set pid=5 where pname='laptop';
+Query OK, 1 row affected (0.13 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from product;
++------+--------+----------+
+| pid  | pname  | quantity |
++------+--------+----------+
+|    1 | pen    |       10 |
+|    2 | note   |        5 |
+|    3 | pencil |     NULL |
+|    4 | mobile |        1 |
+|    5 | laptop |        2 |
++------+--------+----------+
+5 rows in set (0.00 sec)
+
+mysql> update product set quantity=100;
+Query OK, 5 rows affected (0.09 sec)
+Rows matched: 5  Changed: 5  Warnings: 0
+
+mysql> select * from product;
++------+--------+----------+
+| pid  | pname  | quantity |
++------+--------+----------+
+|    1 | pen    |      100 |
+|    2 | note   |      100 |
+|    3 | pencil |      100 |
+|    4 | mobile |      100 |
+|    5 | laptop |      100 |
++------+--------+----------+
+5 rows in set (0.00 sec)
+mysql> delete from product;
+Query OK, 5 rows affected (0.08 sec)
+
+mysql> select * from product;
+Empty set (0.00 sec)
+
+//////////////////////////////Distinct/////////////////////////////////
+mysql> select distinct deptno from employee;
++--------+
+| deptno |
++--------+
+|     10 |
+|     20 |
+|     30 |
++--------+
+3 rows in set (0.05 sec)
+
+mysql> select distinct desgination from employee;
++-------------+
+| desgination |
++-------------+
+| softdev     |
+| tester      |
+| techsupport |
+| manager     |
+| clerk       |
++-------------+
+5 rows in set (0.00 sec)
+
+mysql> select distinct desgination,deptno from employee;
++-------------+--------+
+| desgination | deptno |
++-------------+--------+
+| softdev     |     10 |
+| tester      |     20 |
+| techsupport |     30 |
+| manager     |     20 |
+| clerk       |     10 |
+| techsupport |     10 |
+| clerk       |     20 |
+| manager     |     30 |
+| softdev     |     30 |
++-------------+--------+
+9 rows in set (0.00 sec)
+mysql> select bloodgroup bldgrp from employee;
++--------+
+| bldgrp |
++--------+
+| o+     |
+| ab-    |
+| o-     |
+| ab+    |
+| o+     |
+| ab-    |
+| b+     |
+| 0+     |
+| o-     |
+| ab-    |
++--------+
+10 rows in set (0.00 sec)
+
+mysql> update employee set bloodgroup='a-' where name='naveen';
+Query OK, 1 row affected (0.08 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from employee;
++-----+---------+-------------+------------+------+------------+--------+--------+-------------------------+--------+-------------+
+| eid | name    | mobile      | doj        | age  | bloodgroup | deptno | salary | email                   | gender | desgination |
++-----+---------+-------------+------------+------+------------+--------+--------+-------------------------+--------+-------------+
+|   1 | gokul   |  8940191847 | 2020-01-01 |   22 | o+         |     10 |  20000 | gokulsmart23@gmail.com  | male   | softdev     |
+|   2 | john    |  9876543210 | 2020-02-05 |   21 | ab-        |     20 |  18000 | john123@gmail.com       | male   | tester      |
+|   3 | mohan   |  8463424223 | 2020-05-22 |   20 | o-         |     30 |  15000 | mohankumar@gmail.com    | male   | techsupport |
+|   4 | kavin   |  8946383744 | 2020-12-05 |   23 | ab+        |     20 |  12000 | kavin123@gmail.com      | male   | manager     |
+|   5 | anusha  |  7998332434 | 2019-09-09 |   22 | o+         |     10 |  22000 | anushag@gmail.com       | female | clerk       |
+|   6 | manisha |  9747573841 | 2019-10-02 |   22 | ab-        |     10 |  16000 | manisha1997@gmail.com   | female | techsupport |
+|   7 | karthik |  8976434734 | 2019-09-07 |   24 | b+         |     20 |  21000 | karthik101@gmail.com    | male   | clerk       |
+|   8 | naveen  |  9834838482 | 2021-02-19 |   19 | a-         |     30 |  17000 | naveen@gmail.com        | male   | manager     |
+|   9 | sathya  | 98553434434 | 2021-07-22 |   19 | o-         |     20 |  15000 | sathyamoorthy@gmail.com | female | clerk       |
+|  10 | vijay   | 97377434484 | 2018-07-15 |   25 | ab-        |     30 |  19000 | vijaykumar@gmail.com    | male   | softdev     |
++-----+---------+-------------+------------+------+------------+--------+--------+-------------------------+--------+-------------+
+10 rows in set (0.00 sec)
+
+mysql> select * from employee where eid is 1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1' at line 1
+mysql> select * from employee where eid = 1;
++-----+-------+------------+------------+------+------------+--------+--------+------------------------+--------+-------------+
+| eid | name  | mobile     | doj        | age  | bloodgroup | deptno | salary | email                  | gender | desgination |
++-----+-------+------------+------------+------+------------+--------+--------+------------------------+--------+-------------+
+|   1 | gokul | 8940191847 | 2020-01-01 |   22 | o+         |     10 |  20000 | gokulsmart23@gmail.com | male   | softdev     |
++-----+-------+------------+------------+------+------------+--------+--------+------------------------+--------+-------------+
+1 row in set (0.00 sec)
+
+mysql> update employee set mobile=9343434242 where eid=9;
+Query OK, 1 row affected (0.09 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from employee;
++-----+---------+-------------+------------+------+------------+--------+--------+-------------------------+--------+-------------+
+| eid | name    | mobile      | doj        | age  | bloodgroup | deptno | salary | email                   | gender | desgination |
++-----+---------+-------------+------------+------+------------+--------+--------+-------------------------+--------+-------------+
+|   1 | gokul   |  8940191847 | 2020-01-01 |   22 | o+         |     10 |  20000 | gokulsmart23@gmail.com  | male   | softdev     |
+|   2 | john    |  9876543210 | 2020-02-05 |   21 | ab-        |     20 |  18000 | john123@gmail.com       | male   | tester      |
+|   3 | mohan   |  8463424223 | 2020-05-22 |   20 | o-         |     30 |  15000 | mohankumar@gmail.com    | male   | techsupport |
+|   4 | kavin   |  8946383744 | 2020-12-05 |   23 | ab+        |     20 |  12000 | kavin123@gmail.com      | male   | manager     |
+|   5 | anusha  |  7998332434 | 2019-09-09 |   22 | o+         |     10 |  22000 | anushag@gmail.com       | female | clerk       |
+|   6 | manisha |  9747573841 | 2019-10-02 |   22 | ab-        |     10 |  16000 | manisha1997@gmail.com   | female | techsupport |
+|   7 | karthik |  8976434734 | 2019-09-07 |   24 | b+         |     20 |  21000 | karthik101@gmail.com    | male   | clerk       |
+|   8 | naveen  |  9834838482 | 2021-02-19 |   19 | a-         |     30 |  17000 | naveen@gmail.com        | male   | manager     |
+|   9 | sathya  |  9343434242 | 2021-07-22 |   19 | o-         |     20 |  15000 | sathyamoorthy@gmail.com | female | clerk       |
+|  10 | vijay   | 97377434484 | 2018-07-15 |   25 | ab-        |     30 |  19000 | vijaykumar@gmail.com    | male   | softdev     |
++-----+---------+-------------+------------+------+------------+--------+--------+-------------------------+--------+-------------+
+10 rows in set (0.00 sec)
+
+mysql> delete from employee where eid=5;
+Query OK, 1 row affected (0.08 sec)
+
+mysql> select * from employee;
++-----+---------+-------------+------------+------+------------+--------+--------+-------------------------+--------+-------------+
+| eid | name    | mobile      | doj        | age  | bloodgroup | deptno | salary | email                   | gender | desgination |
++-----+---------+-------------+------------+------+------------+--------+--------+-------------------------+--------+-------------+
+|   1 | gokul   |  8940191847 | 2020-01-01 |   22 | o+         |     10 |  20000 | gokulsmart23@gmail.com  | male   | softdev     |
+|   2 | john    |  9876543210 | 2020-02-05 |   21 | ab-        |     20 |  18000 | john123@gmail.com       | male   | tester      |
+|   3 | mohan   |  8463424223 | 2020-05-22 |   20 | o-         |     30 |  15000 | mohankumar@gmail.com    | male   | techsupport |
+|   4 | kavin   |  8946383744 | 2020-12-05 |   23 | ab+        |     20 |  12000 | kavin123@gmail.com      | male   | manager     |
+|   6 | manisha |  9747573841 | 2019-10-02 |   22 | ab-        |     10 |  16000 | manisha1997@gmail.com   | female | techsupport |
+|   7 | karthik |  8976434734 | 2019-09-07 |   24 | b+         |     20 |  21000 | karthik101@gmail.com    | male   | clerk       |
+|   8 | naveen  |  9834838482 | 2021-02-19 |   19 | a-         |     30 |  17000 | naveen@gmail.com        | male   | manager     |
+|   9 | sathya  |  9343434242 | 2021-07-22 |   19 | o-         |     20 |  15000 | sathyamoorthy@gmail.com | female | clerk       |
+|  10 | vijay   | 97377434484 | 2018-07-15 |   25 | ab-        |     30 |  19000 | vijaykumar@gmail.com    | male   | softdev     |
++-----+---------+-------------+------------+------+------------+--------+--------+-------------------------+--------+-------------+
+9 rows in set (0.00 sec)
+write a query to display the salary of the employee that is incremented by 5000
+mysql> select salary+5000 as increment from employee;
++-----------+
+| increment |
++-----------+
+|     25000 |
+|     23000 |
+|     20000 |
+|     17000 |
+|     21000 |
+|     26000 |
+|     22000 |
+|     20000 |
+|     24000 |
++-----------+
+9 rows in set (0.00 sec)
+write a query to display the salary of the employee that is decremented by 5000
+mysql> select salary-5000 as decrement from employee;
++-----------+
+| decrement |
++-----------+
+|     15000 |
+|     13000 |
+|     10000 |
+|      7000 |
+|     11000 |
+|     16000 |
+|     12000 |
+|     10000 |
+|     14000 |
++-----------+
+9 rows in set (0.00 sec)
+write a query to display annual salary of all employees
+mysql> select salary*12 as 'annual salary' from employee;
++---------------+
+| annual salary |
++---------------+
+|        240000 |
+|        216000 |
+|        180000 |
+|        144000 |
+|        192000 |
+|        252000 |
+|        204000 |
+|        180000 |
+|        228000 |
++---------------+
+9 rows in set (0.00 sec)
+mysql> select salary/30 as 'per day salary' from employee;
++----------------+
+| per day salary |
++----------------+
+|       666.6667 |
+|       600.0000 |
+|       500.0000 |
+|       400.0000 |
+|       533.3333 |
+|       700.0000 |
+|       566.6667 |
+|       500.0000 |
+|       633.3333 |
++----------------+
+write a query to display the result from the employee table whose job desgination is softdev
+ select * from employee where desgination='softdev';
++-----+-------+-------------+------------+------+------------+--------+--------+------------------------+--------+-------------+
+| eid | name  | mobile      | doj        | age  | bloodgroup | deptno | salary | email                  | gender | desgination |
++-----+-------+-------------+------------+------+------------+--------+--------+------------------------+--------+-------------+
+|   1 | gokul |  8940191847 | 2020-01-01 |   22 | o+         |     10 |  20000 | gokulsmart23@gmail.com | male   | softdev     |
+|  10 | vijay | 97377434484 | 2018-07-15 |   25 | ab-        |     30 |  19000 | vijaykumar@gmail.com   | male   | softdev     |
++-----+-------+-------------+------------+------+------------+--------+--------+------------------------+--------+-------------+
+
+write a query to display all the record of the employee excluding dno 20
+ select * from employee where deptno != 20;
++-----+---------+-------------+------------+------+------------+--------+--------+------------------------+--------+-------------+
+| eid | name    | mobile      | doj        | age  | bloodgroup | deptno | salary | email                  | gender | desgination |
++-----+---------+-------------+------------+------+------------+--------+--------+------------------------+--------+-------------+
+|   1 | gokul   |  8940191847 | 2020-01-01 |   22 | o+         |     10 |  20000 | gokulsmart23@gmail.com | male   | softdev     |
+|   3 | mohan   |  8463424223 | 2020-05-22 |   20 | o-         |     30 |  15000 | mohankumar@gmail.com   | male   | techsupport |
+|   6 | manisha |  9747573841 | 2019-10-02 |   22 | ab-        |     10 |  16000 | manisha1997@gmail.com  | female | techsupport |
+|   8 | naveen  |  9834838482 | 2021-02-19 |   19 | a-         |     30 |  17000 | naveen@gmail.com       | male   | manager     |
+|  10 | vijay   | 97377434484 | 2018-07-15 |   25 | ab-        |     30 |  19000 | vijaykumar@gmail.com   | male   | softdev     |
++-----+---------+-------------+------------+------+------------+--------+--------+------------------------+--------+-------------+
+
+write a query to display sal>15000
+mysql> select * from employee where salary>15000;
++-----+---------+-------------+------------+------+------------+--------+--------+------------------------+--------+-------------+
+| eid | name    | mobile      | doj        | age  | bloodgroup | deptno | salary | email                  | gender | desgination |
++-----+---------+-------------+------------+------+------------+--------+--------+------------------------+--------+-------------+
+|   1 | gokul   |  8940191847 | 2020-01-01 |   22 | o+         |     10 |  20000 | gokulsmart23@gmail.com | male   | softdev     |
+|   2 | john    |  9876543210 | 2020-02-05 |   21 | ab-        |     20 |  18000 | john123@gmail.com      | male   | tester      |
+|   6 | manisha |  9747573841 | 2019-10-02 |   22 | ab-        |     10 |  16000 | manisha1997@gmail.com  | female | techsupport |
+|   7 | karthik |  8976434734 | 2019-09-07 |   24 | b+         |     20 |  21000 | karthik101@gmail.com   | male   | clerk       |
+|   8 | naveen  |  9834838482 | 2021-02-19 |   19 | a-         |     30 |  17000 | naveen@gmail.com       | male   | manager     |
+|  10 | vijay   | 97377434484 | 2018-07-15 |   25 | ab-        |     30 |  19000 | vijaykumar@gmail.com   | male   | softdev     |
++-----+---------+-------------+------------+------+------------+--------+--------+------------------------+--------+-------------+
+age<30
+name,sal,email,mob age>=18;

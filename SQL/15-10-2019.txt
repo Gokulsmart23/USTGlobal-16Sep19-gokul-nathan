@@ -1,0 +1,83 @@
+
++----------+---------------+------+-----+---------+-------+
+| Field    | Type          | Null | Key | Default | Extra |
++----------+---------------+------+-----+---------+-------+
+| deptno   | int(25)       | NO   | PRI | NULL    |       |
+| dname    | varchar(100)  | YES  |     | NULL    |       |
+| location | varchar(1000) | YES  |     | NULL    |       |
++----------+---------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> insert into department values(10,'hr','banglore'),(20,'softdev','chennai'),(30,'tester','delhi');
+Query OK, 3 rows affected (0.05 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from department;
++--------+---------+----------+
+| deptno | dname   | location |
++--------+---------+----------+
+|     10 | hr      | banglore |
+|     20 | softdev | chennai  |
+|     30 | tester  | delhi    |
++--------+---------+----------+
+3 rows in set (0.00 sec)
+
+WAQTD all records of all employees whose date of joining is same as any name
+mysql> desc department;
+
+mysql> select * from employee where doj=(select doj from employee where name='gokul');
++-----+-------+------------+------------+------+------------+--------+--------+------------------------+--------+-------------+
+| eid   | name  | mobile     | doj        
+| age  | bloodgroup | deptno | salary | email                  | gender | desgination |
++-----+-------+------------+------------+------+------------+--------+--------+------------------------+--------+-------------+
+|   1    | gokul | 8940191847 | 2020-01-01 |   22 | o+         |     10 |  20000 | gokulsmart23@gmail.com | male   | softdev     |
++-----+-------+------------+------------+------+------------+--------+--------+------------------------+--------+-------------+
+1 row in set (0.23 sec)
+
+WAQTD the second maximum salary
+mysql> select max(salary) from employee where salary<(select max(salary) from employee);
++-------------+
+| max(salary) |
++-------------+
+|       20000 |
++-------------+
+
+WAQTD name of the employee who is working in a location which has atleast one 'A' in the location
+mysql> select name from employee where deptno in(select deptno from department where location like '%a%');
++---------+
+| name    |
++---------+
+| gokul   |
+| john    |
+| kavin   |
+| manisha |
+| karthik |
+| sathya  |
++---------+
+6 rows in set (0.03 sec)
+
+ WAQTD all the records of the employee  who is working in admin,operator,softdev
+
+WAQTD the maximum salary for each department 
+mysql> select max(salary) from employee group by deptno;
++-------------+
+| max(salary) |
++-------------+
+|       20000 |
+|       21000 |
+|       19000 |
++-------------+
+3 rows in set (0.00 sec)
+WAQTD the highest salary given to HR in each department
+ select max(salary) from employee where desgination='HR' group by deptno;
+
+WAQTD deptno which has atleast two employees 
+mysql> select deptno from employee group by deptno having count(*)>=2;
++--------+
+| deptno |
++--------+
+|     10 |
+|     20 |
+|     30 |
++--------+
+3 rows in set (0.00 sec)
