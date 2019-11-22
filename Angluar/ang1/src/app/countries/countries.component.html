@@ -1,0 +1,25 @@
+<!-- <li class="nav-item dropdown text-center">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Forms
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+      <a class="dropdown-item" routerLink="./form1">Form1</a>
+      <a class="dropdown-item" routerLink="./form2">Form2</a>
+      <a class="dropdown-item" routerLink="./form3">Form3</a>
+      <a class="dropdown-item" routerLink="./form4">Form4</a>
+    </div>
+  </li> -->
+  
+
+
+ 
+    <div class="body">
+           <app-countries-dropdown></app-countries-dropdown>
+    <div class=" card col-md-3 float-left card-body mt-3" *ngFor="let new of news" >
+        <img src="{{new.urlToImage}}" alt="" style="height: 200px">
+        <p style="height: 100px">{{new.title}}</p>
+    
+    </div>
+</div>
+    
+   

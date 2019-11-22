@@ -1,0 +1,39 @@
+<form action="" class="col-md-4 offset-4 card card-body mt-5 mb-5 card card-body">
+    <h1 class="text-center bg-success text-white">Company Requirement</h1>
+    <br>
+    <div class="form-group">
+        <input type="text" name="companyname" id="companyname" style="width: 80%" class="form-group" placeholder="Company Name" #companyname="ngModel" ngModel required>
+        <div *ngIf="companyname.touched && companyname.invalid">
+            <p class="alert alert-danger" >*this field is required</p>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="btn btn-success dropdown-toggle"  type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Skills
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" required>
+            <div class="checkbox">
+                <label><input type="checkbox" value="checkbox">Core-Java</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" value="checkbox">J2EE</label>
+              </div>
+              <div class="checkbox disabled">
+                <label><input type="checkbox" value="checkbox">SQL</label>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="form-group">
+        <input type="text" name="yop" id="yop" style="width: 80%" class="form-group" placeholder="Year of PassedOut" required>
+    </div>
+    <div class="form-group">
+        <input type="text" name="mctc" id="mctc" style="width: 80%" class="form-group" placeholder="MCTC" required>
+    </div>
+    <div class="form-group">
+        <input type="text" name="location" id="location" style="width: 80%" class="form-group" placeholder="Location">
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-outline-success float-right" >Add Requirement</button>
+    </div>
+</form>

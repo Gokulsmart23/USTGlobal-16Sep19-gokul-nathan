@@ -1,0 +1,10 @@
+<div class="news">
+<app-entertainment-home></app-entertainment-home>
+<h5 style="font-family: Arial, Helvetica, sans-serif;margin-left: 600px">Top News from India</h5>
+<div class="col-md-6 mt-2 offset-2 card card-body" *ngFor="let new of news" style="width:600px;margin-left:380px;">
+    <img src="{{new.urlToImage}}" alt="">
+    <h1>{{new.title}}</h1>
+
+</div>
+<app-sports-home></app-sports-home>
+</div>
