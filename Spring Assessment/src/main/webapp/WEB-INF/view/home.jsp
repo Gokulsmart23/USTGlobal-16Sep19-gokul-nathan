@@ -1,11 +1,9 @@
-<%@page import="com.ustglobal.rms.dto.ProductBean"%>
-<%@page import="com.ustglobal.rms.dto.RetailerBean"%>
-<%@page import="org.hibernate.Session"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
 
+<%@page import="com.ustglobal.rms.bean.User"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <%
-	RetailerBean beans = (RetailerBean) session.getAttribute("bean");
+User bean =(User)session.getAttribute("user");
 %>
 <!DOCTYPE html>
 <html>
@@ -14,48 +12,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="./changepassword">Change Password</a>
-	<a href="./logout" style="float: right;">Logout</a>
-	<h2>
-		Welcome
-		<%=beans.getName()%>
-	</h2>
-	<fieldset>
-		<legend>Search</legend>
-		<form action="./search">
-			<table>
- 				<tr>
-					<td>ID :</td>
-					<td><input type="number" name="id"></td>
-					<td><input type="submit" name="Search"></td>
-				</tr>
-			</table>
-		</form>
-	</fieldset>
+<h3>${msg} </h3>
+	<a href="#">Change Password</a>
+	<a href="./order">ordered item</a>
+	<a href="./search">Search Product</a>
+	<a href="./logout">Logout</a>
+	<h2>Welcome <%=bean.getName()%></h2>
 
-	<%
-	ProductBean productBean = (ProductBean) request.getAttribute("bean");
-	%>
-
-	<%
-		if (productBean != null) {
-	%>
-	<table>
-		<tr>
-			<th>Name</th>
-			<th>Quantity</th>
-			<th>price</th>
-		</tr>
-		<tr>
-			<td><%=productBean.getPname()%></td>
-			<td><%=productBean.getPqty()%></td>
-			<td><%=productBean.getPrice()%></td>
-		</tr>
-		
-		</table>
-	<%
-		}
-	%>
-	<h3>${msg}</h3>
+<h3 style="color: red;">${msg}</h3>
 </body>
 </html>
