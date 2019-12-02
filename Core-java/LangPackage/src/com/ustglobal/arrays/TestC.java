@@ -23,9 +23,13 @@ public class TestC {
 				System.out.println(s);
 			}
 		}
-		@Override
-		public String toString() {
-			return students;
+		
+		static void r(Student[] sa) {
+			for (Student student : sa) {
+				System.out.println(student);
+			}
 		}
+		
+		
 		
 }

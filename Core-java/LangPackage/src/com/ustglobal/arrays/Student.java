@@ -10,6 +10,11 @@ public class Student {
 		this.name = name;
 		this.percentage = percentage;
 	}
+	
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", name=" + name + ", Percentage=" + percentage + "]";
+	}
 	 
 	 
 }
