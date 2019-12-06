@@ -11,5 +11,4 @@ public interface EmployeeDAO {
 	public boolean changePassword(int id, String password);
 	
 	public boolean registerEmployee(EmployeeInfo info);
-	
 }

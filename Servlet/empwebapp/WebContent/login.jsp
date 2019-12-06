@@ -1,53 +1,61 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 	<%@page session="false" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
 
-<jsp:useBean id="msg" class="java.lang.String" scope="request"/>
+<jsp:useBean id="msg" class="java.lang.String" scope="request"></jsp:useBean>
+
 <%
-	String id = "";
-	Cookie[] cookies = request.getCookies();
-	if (cookies != null) {
-		for (Cookie cookie : cookies) {
-			if (cookie.getName().equals("alwaysRemember")) {
-				id = cookie.getValue();
-			}
+String id = "";
+Cookie[] cookies = request.getCookies();
+if(cookies!=null) {
+
+	for (Cookie cookie : cookies) {
+		if(cookie.getName().equals("alwaysRemember")) {
+			id= cookie.getValue();
 		}
 	}
+}
+
 %>
 <body>
-	<h4><%=msg %></h4>
-	<fieldset align='center'>
-		<legend>login</legend>
 
-		<form action='./login' method='post'>
-			<table align='center'>
-				<tr>
-					<td>Id:</td>
-					<td><input type='number' name='id' value='<%=id%>'></td>
-				</tr>
-				<tr>
-					<td>Password:</td>
-					<td><input type='password' name='password'></td>
-				</tr>
-				<tr>
-					<td><input type='checkbox' name='rememberme' value='checked'></td>
-					<td>Remember Me</td>
-				</tr>
-				<tr>
-					<td><input type='submit' value='Reset'></td>
-					<td><input type='submit' value='login'></td>
-				</tr>
+	<div style='background-color: black; color: white; margin-top: 1cm;'>
+		<center>
+			<h1>LOGIN</h1>
+		</center>
+	</div>
+	<form action='./login' method='post'>
+		<table align='center'>
+			<tr>
+				<td>ID</td>
+				<td><input type='text' name='id' id='id' value='<%=id%>'></td>
+			</tr>
+			<tr>
+				<td>PASSWORD</td>
+				<td><input type='password' name='password' id='password'
+					class='tb'></td>
+			</tr>
+			<td><input type='submit' name='submit' value='login'
+				style='margin-right: 2cm;'></td>
+			<td><input type='reset' name='reset'></td>
+		</table>
+		<br>
+		<div align='center'>
+			<input type='checkbox' name='rememberme' value='checked'>&nbsp;<label
+				for='remberme'>Remember_Me</label>
+		</div>
+		<br>
+		<div align='center'>
+			<a href='register.html'>Register here.....</a>
+		</div>
+	</form>
 
-			</table>
-		</form>
 
-		<a href='./register.html'>Register</a>
-	</fieldset>
 </body>
 </html>

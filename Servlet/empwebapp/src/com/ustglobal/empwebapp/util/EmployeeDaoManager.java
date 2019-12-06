@@ -9,6 +9,5 @@ public class EmployeeDaoManager {
 	
 	public static EmployeeDAO getEmployeeDAO() {
 		return new EmployeeDaoJdbcImpl();
-		
 	}
 }

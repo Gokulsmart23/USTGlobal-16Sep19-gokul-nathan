@@ -17,44 +17,52 @@ import com.ustglobal.empwebapp.dto.EmployeeInfo;
 import com.ustglobal.empwebapp.util.EmployeeDaoManager;
 
 @WebServlet("/login")
-public class LoginServlet extends HttpServlet {
+public class LoginServlet extends HttpServlet{
+
+
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
 		int id = Integer.parseInt(req.getParameter("id"));
+
 		String password = req.getParameter("password");
 		String rememberMe = req.getParameter("rememberme");
-		if (rememberMe == null) {
+
+		if(rememberMe == null) {
 			Cookie[] cookies = req.getCookies();
-			if (cookies != null) {
+			if(cookies != null) {
 				for (Cookie cookie : cookies) {
-					if (cookie.getName().equals("alwaysRemember")) {
+					if(cookie.getName().equals("alwaysRemember")) {
 						cookie.setMaxAge(0);
 						resp.addCookie(cookie);
 					}
 				}
 			}
-		} else {
+
+		}else
+		{
 			Cookie cookie = new Cookie("alwaysRemember", id+"");
 			resp.addCookie(cookie);
 		}
+		EmployeeDAO dao =EmployeeDaoManager.getEmployeeDAO();
+		EmployeeInfo info = dao.auth(Integer.parseInt(req.getParameter("id")), password);
 
-		EmployeeDAO dao = EmployeeDaoManager.getEmployeeDAO();
-		EmployeeInfo info = dao.auth(id, password);
-
-
-		if (info == null) {
+		if(info == null) {
+			
 			PrintWriter out = resp.getWriter();
-			out.println("<html>");
-			out.println("<h4 style='color:Red'>Invalid id and password</h4>");
-			out.println("</html>");
+			out.println("<html><h4 style='color:Red'>Invalid id or Password</h4></html>");
+			
 			RequestDispatcher dispatcher = req.getRequestDispatcher("/login.jsp");
-			dispatcher.include(req, resp);
-		} else {
+			dispatcher.include(req, resp);		
+		}else {
+
 			HttpSession session = req.getSession(true);
 			session.setAttribute("info", info);
-			RequestDispatcher dispacher = req.getRequestDispatcher("/home");
-			dispacher.forward(req, resp);
+
+			RequestDispatcher dispatcher = req.getRequestDispatcher("/home");
+			dispatcher.forward(req, resp);
+
 		}
 	}
 }
