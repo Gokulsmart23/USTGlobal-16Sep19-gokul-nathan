@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "stockmanagement": {
+    "assesment-ang": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/stockmanagement",
+            "outputPath": "dist/assesment-ang",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -25,13 +25,12 @@
             ],
             "styles": [
               "src/styles.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/font-awesome/css/font-awesome.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": [
-              "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
-
+              "node_modules/jquery/dist/jquery.js",
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.js",
+              "node_modules/ngx-toastr/toastr.css"
             ]
           },
           "configurations": {
@@ -69,18 +68,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "stockmanagement:build"
+            "browserTarget": "assesment-ang:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "stockmanagement:build:production"
+              "browserTarget": "assesment-ang:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "stockmanagement:build"
+            "browserTarget": "assesment-ang:build"
           }
         },
         "test": {
@@ -117,15 +116,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "stockmanagement:serve"
+            "devServerTarget": "assesment-ang:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "stockmanagement:serve:production"
+              "devServerTarget": "assesment-ang:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "stockmanagement"
+  "defaultProject": "assesment-ang"
 }
