@@ -1,23 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AddProductComponent } from './add-product/add-product.component';
+import { GetAllComponent } from './get-all/get-all.component';
+import { CartComponent } from './cart/cart.component';
+import { OrderListComponent } from './order-list/order-list.component';
 import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
-import { GetAllProductsComponent } from './get-all-products/get-all-products.component';
-import { SearchProductsComponent } from './search-products/search-products.component';
-import { AddProductsComponent } from './add-products/add-products.component';
-import { ModifyProductsComponent } from './modify-products/modify-products.component';
-import { GetFromCartComponent } from './get-from-cart/get-from-cart.component';
 
 
 const routes: Routes = [
-  {path : 'home', component: HomeComponent},
-  {path : 'about', component: AboutComponent},
-  {path : 'get-all-products', component: GetAllProductsComponent},
-  {path : 'search-products', component: SearchProductsComponent},
-  {path : 'add-products', component: AddProductsComponent},
-  {path : 'modify-products', component: ModifyProductsComponent},
-  {path : 'get-from-cart', component: GetFromCartComponent}
-
+  {path : '' , component : HomeComponent},
+  {path : 'add-product', component : AddProductComponent},
+  {path : 'get-all', component : GetAllComponent},
+  {path : 'cart', component : CartComponent},
+  {path : 'order-list', component : OrderListComponent},
+  {path : 'cart' , component : CartComponent}
 ];
 
 @NgModule({
